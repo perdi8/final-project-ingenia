@@ -1,0 +1,1 @@
+web: java -jar -D build/libs/final-project-ingenia.jar

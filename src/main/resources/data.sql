@@ -1,3 +1,3 @@
 INSERT INTO experts (name) values ('Miguel');
 
-INSERT INTO tags (name) value ('Tarea 1')
+INSERT INTO tags (name) values ('Tarea 1')
