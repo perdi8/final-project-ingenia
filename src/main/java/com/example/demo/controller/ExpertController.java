@@ -24,10 +24,21 @@ public class ExpertController {
         this.expertService = expertService;
     }
 
+
     @GetMapping("/experts")
-    public List<Expert> findAll() {
-        return expertService.findAllFromEntityManager();
+    public List<Expert> welcome(@RequestParam(name="name", required=false ) String name){
+       if(name != null) {
+           return expertService.findAllByAttributeFromEntityManager(name);
+       }else{
+           return expertService.findAllFromEntityManager();
+       }
     }
+
+
+//    @GetMapping("/experts")
+//    public List<Expert> findAll() {
+//        return expertService.findAllFromEntityManager();
+//    }
 
     @GetMapping("/experts/{id}")
     public Expert findById(@PathVariable Long id) {
