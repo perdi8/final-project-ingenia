@@ -19,6 +19,6 @@ public class UserDetailServices implements UserDetailsService {
         // Retorna un nuevo usuario de spring security donde ponemos nuestro usuario, el array list
         // se utiliza para poner los tipos de roles que tendra el usuario
         // el codificador de la contraseña es dentro de {} poner noop
-        return new User("miguel", "{noop}ingenia", new ArrayList<>());
+        return new User("miguel@email.com", "{noop}ingenia", new ArrayList<>());
     }
 }
