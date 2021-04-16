@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Expert;
+import com.example.demo.model.Tag;
 import com.example.demo.service.ExpertService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,32 +26,40 @@ public class ExpertController {
     }
 
 
-    @GetMapping("/experts")
-    public List<Expert> welcome(@RequestParam(name="name", required=false ) String name){
-       if(name != null) {
-           return expertService.findAllByAttributeFromEntityManager(name);
-       }else{
-           return expertService.findAllFromEntityManager();
-       }
+    @GetMapping("/expertos")
+    public List<Expert> expertFilters(@RequestParam(name="nombre", required=false) String nombre,
+                                            @RequestParam(name="modalidad",required=false) String modalidad,
+                                            @RequestParam(name="estado",required=false) Boolean estado,
+                                            @RequestParam(name="tag",required=false) Long tag,
+                                            @RequestParam(name="limite", required=false, defaultValue = "6") Integer limite,
+                                            @RequestParam(name="pagina", required=false, defaultValue = "0") Integer pagina
+
+                                      ) {
+
+
+        if (tag != null) {
+            return expertService.findAllByTagExperts(tag, limite, pagina);
+
+        } else if (nombre != null) {
+            return expertService.findAllNombreExperts(nombre, limite, pagina);
+
+        }else if(modalidad != null) {
+            return expertService.findAllModalidadExperts(modalidad, limite, pagina);
+
+        }else if (estado != null) {
+            return expertService.findAllEstadoExperts(estado, limite, pagina);
+        }
+
+        return expertService.findAllFromEntityManager(limite, pagina);
     }
 
 
-//    @GetMapping("/experts")
-//    public List<Expert> findAll() {
-//        return expertService.findAllFromEntityManager();
-//    }
-
-    @GetMapping("/experts/{id}")
+    @GetMapping("/expertos/{id}")
     public Expert findById(@PathVariable Long id) {
         return expertService.findByIdFromEntityManager(id);
     }
 
-    @GetMapping("/experts/attributes/{name}")
-    public List<Expert> findAllByAttribute(@PathVariable String name) {
-        return expertService.findAllByAttributeFromEntityManager(name);
-    }
-
-    @PostMapping("/experts")
+    @PostMapping("/expertos")
     public ResponseEntity<Expert> createExpert(@RequestBody Expert expert) throws URISyntaxException {
         log.debug("REST request to create an User: {} ", expert);
         if (expert.getId() != null)
@@ -58,11 +67,11 @@ public class ExpertController {
 
         Expert expertDB = expertService.createExpert(expert);
         return ResponseEntity
-                .created(new URI("/api/experts/" + expertDB.getId()))
+                .created(new URI("/api/expertos/" + expertDB.getId()))
                 .body(expertDB);
     }
 
-    @PutMapping("/experts")
+    @PutMapping("/expertos")
     public ResponseEntity<Expert> updateExpert(@RequestBody Expert expert) {
         log.debug("REST request to update an User: {}", expert);
 

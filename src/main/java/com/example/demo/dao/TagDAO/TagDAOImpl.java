@@ -5,10 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class TagDAOImpl implements TagDAO {
@@ -29,17 +32,17 @@ public class TagDAOImpl implements TagDAO {
     }
 
     @Override
-    public Tag findByIdFromEntityManager(Long id){
+    public Optional<Tag> findByIdFromEntityManager(Long id){
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<Tag> criteria = builder.createQuery(Tag.class);
-        Root<Tag> root = criteria.from(Tag.class);
+        Root<Tag>root = criteria.from(Tag.class);
 
         criteria.select(root);
 
         criteria.where(builder.equal(root.get("id"), id));
 
-        return manager.createQuery(criteria).getSingleResult();
+        return Optional.of(manager.createQuery(criteria).getSingleResult());
     }
 
     @Override
@@ -50,10 +53,50 @@ public class TagDAOImpl implements TagDAO {
         Root<Tag> root = criteria.from(Tag.class);
         criteria.select(root);
 
-        criteria.where(builder.like(root.get("name"), "%" + name + "%"));
+        criteria.where(builder.equal(root.get("nombre"), name));
 
         return manager.createQuery(criteria).getResultList();
     }
+
+    @Override
+    public List<Tag> findAll(Integer limite, Integer pagina) {
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Tag> criteria = builder.createQuery(Tag.class);
+        Root<Tag> root = criteria.from(Tag.class);
+        criteria.select(root);
+
+       Query query = manager.createQuery(criteria);
+
+        query.setMaxResults(limite); // size
+        query.setFirstResult(pagina); // pagination
+
+        List<Tag> tags = query.getResultList();
+        System.out.println(tags);
+
+        return tags;
+    }
+
+
+    @Override
+    public List<Tag> findAllFilterNombre(String nombre, Integer limite, Integer pagina) {
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Tag> criteria = builder.createQuery(Tag.class);
+        Root<Tag> root = criteria.from(Tag.class);
+        criteria.select(root);
+
+        criteria.where(builder.equal(root.get("nombre"),  nombre));
+
+        Query query = manager.createQuery(criteria);
+
+        query.setMaxResults(limite); // size
+        query.setFirstResult(pagina); // pagination
+
+        List<Tag> tags = query.getResultList();
+        System.out.println(tags);
+
+        return tags;
+    }
+
 
 
 }

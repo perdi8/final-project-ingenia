@@ -3,6 +3,7 @@ package com.example.demo.service.Impl;
 import com.example.demo.dao.ExpertDAO.ExpertDAO;
 import com.example.demo.dao.ExpertDAO.ExpertDAOImpl;
 import com.example.demo.model.Expert;
+import com.example.demo.model.Tag;
 import com.example.demo.repository.ExpertRepository;
 import com.example.demo.service.ExpertService;
 import org.slf4j.Logger;
@@ -28,9 +29,10 @@ public class ExpertServiceImpl implements ExpertService {
         this.expertRepository = expertRepository;
     }
 
+
     @Override
-    public List<Expert> findAllFromEntityManager() {
-        return this.expertDAO.findAllFromEntityManager();
+    public List<Expert> findAllFromEntityManager(Integer limite, Integer pagina) {
+        return this.expertDAO.findAllFromEntityManager(limite, pagina);
     }
 
     @Override
@@ -39,9 +41,25 @@ public class ExpertServiceImpl implements ExpertService {
     }
 
 
+
     @Override
-    public List<Expert> findAllByAttributeFromEntityManager(String name) {
-        return this.expertDAO.findAllByAttributeFromEntityManager(name);
+    public List<Expert> findAllByTagExperts(Long tagId, Integer limite, Integer pagina) {
+        return this.expertDAO.findAllByTagExperts(tagId, limite, pagina);
+    }
+
+    @Override
+    public List<Expert> findAllNombreExperts(String nombre, Integer limite, Integer pagina) {
+        return this.expertDAO.findAllNombreExperts(nombre, limite, pagina);
+    }
+
+    @Override
+    public List<Expert> findAllModalidadExperts(String modalidad, Integer limite, Integer pagina) {
+        return this.expertDAO.findAllModalidadExperts(modalidad, limite, pagina);
+    }
+
+    @Override
+    public List<Expert> findAllEstadoExperts(Boolean estado, Integer limite, Integer pagina) {
+        return this.expertDAO.findAllEstadoExperts(estado, limite, pagina);
     }
 
 

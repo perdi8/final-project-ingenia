@@ -9,7 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
+import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class TagServiceImpl implements TagService {
@@ -30,7 +32,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag findByIdFromEntityManager(Long id) {
+    public Optional<Tag> findByIdFromEntityManager(Long id) {
         return this.tagDAO.findByIdFromEntityManager(id);
     }
 
@@ -39,6 +41,15 @@ public class TagServiceImpl implements TagService {
         return this.tagDAO.findAllByAttributeFromEntityManager(name);
     }
 
+    @Override
+    public List<Tag> findAll(Integer limite, Integer pagina) {
+        return this.tagDAO.findAll(limite, pagina);
+    }
+
+    @Override
+    public List<Tag> findAllFilterNombre(String nombre, Integer limite, Integer pagina) {
+        return this.tagDAO.findAllFilterNombre(nombre, limite, pagina);
+    }
 
     @Override
     public Tag createTag(Tag tag) {

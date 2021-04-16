@@ -93,12 +93,12 @@ public class Expert {
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+            CascadeType.MERGE})
     @JoinTable(name = "Experts_Tags",
             joinColumns = {@JoinColumn(name = "expert_id" )},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")}
     )
+    @JsonIgnoreProperties("experts")
     private List<Tag> tags = new ArrayList<Tag>();
 
 
