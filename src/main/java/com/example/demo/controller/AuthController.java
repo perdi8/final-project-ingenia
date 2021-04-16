@@ -36,9 +36,9 @@ public class AuthController {
 
         try {
 
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
-            UserDetails userDetails = userDetailServices.loadUserByUsername(request.getUsername());
+            UserDetails userDetails = userDetailServices.loadUserByUsername(request.getEmail());
             String jwt = jwtUtil.generateToken(userDetails);
 
             return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
