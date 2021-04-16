@@ -34,18 +34,17 @@ public class AuthController {
     @PostMapping("/auth")
     public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request) {
 
-        try {
 
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
-            UserDetails userDetails = userDetailServices.loadUserByUsername(request.getEmail());
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+
+            UserDetails userDetails = userDetailServices.loadUserByUsername(request.getUsername());
+            System.out.println(userDetails);
             String jwt = jwtUtil.generateToken(userDetails);
 
             return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
 
-        } catch (BadCredentialsException e) {
-            return  new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
+
 
     }
 }
