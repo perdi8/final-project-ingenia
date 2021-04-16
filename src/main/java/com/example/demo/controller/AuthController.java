@@ -31,7 +31,7 @@ public class AuthController {
     @Autowired
     private JWTUtil jwtUtil;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/auth")
     public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request) {
 
         try {
