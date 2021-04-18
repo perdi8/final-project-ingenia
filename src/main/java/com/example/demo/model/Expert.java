@@ -87,7 +87,7 @@ public class Expert {
     private String origen;
 
     @Column
-    private Boolean estado;
+    private String estado;
 
 
 
@@ -105,7 +105,7 @@ public class Expert {
     public Expert() {
     }
 
-    public Expert(String nombre, LocalDate created_at, LocalDate update_at, String estado_motivo, String disponibilidad, String modalidad, Boolean autonomo, String contacto_telefono, String contacto_email, String contacto_ciudad, String contacto_linkedin, String condiciones_porcentaje, String condiciones_precio_hora, Integer puntuacion, String nif, String credenciales_correo, String credenciales_correo_password, String credenciales_zoom, String credenciales_zoom_password, String fichero_foto, String fichero_cv, String observaciones, String origen, Boolean estado) {
+    public Expert(String nombre, LocalDate created_at, LocalDate update_at, String estado_motivo, String disponibilidad, String modalidad, Boolean autonomo, String contacto_telefono, String contacto_email, String contacto_ciudad, String contacto_linkedin, String condiciones_porcentaje, String condiciones_precio_hora, Integer puntuacion, String nif, String credenciales_correo, String credenciales_correo_password, String credenciales_zoom, String credenciales_zoom_password, String fichero_foto, String fichero_cv, String observaciones, String origen, String estado) {
         this.nombre = nombre;
         this.created_at = created_at;
         this.update_at = update_at;
@@ -324,11 +324,11 @@ public class Expert {
         this.origen = origen;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
