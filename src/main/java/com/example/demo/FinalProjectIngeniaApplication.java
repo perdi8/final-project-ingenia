@@ -40,15 +40,15 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 				"e", "10.00", "15.00", 70,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
-				true);
+				"Validado");
 
 		Expert expert2 = new Expert("Miguel Perdiguero",LocalDate.now(), LocalDate.now(),
 				"null" , "noches", "total", false,
 				"12313423", "email@email.com", "valencia",
-				"e", "10.00", "15.00", 70,
+				"e", "10.00", "15.00", 90,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
-				false);
+				"Validado");
 
 		Expert expert3 = new Expert("Cristina Garcia",LocalDate.now(), LocalDate.now(),
 				"null" , "tardes", "parcial", true,
@@ -56,7 +56,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 				"e", "10.00", "15.00", 70,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
-				true);
+				"Pdt.Validar");
 
 		Expert expert4 = new Expert("Manuela Gutierrez",LocalDate.now(), LocalDate.now(),
 				"null" , "tardes", "total", false,
@@ -64,7 +64,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 				"e", "10.00", "15.00", 70,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
-				false);
+				"Pdt.Validar");
 
 
 		Tag tag1 = new Tag("Etiqueta 1",LocalDate.now() , LocalDate.now());
