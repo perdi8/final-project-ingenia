@@ -17,7 +17,7 @@ public interface ExpertService {
 
     List<Expert>findAllModalidadExperts(String modalidad, Integer limite,Integer pagina);
 
-    List<Expert>findAllEstadoExperts(Boolean estado, Integer limite, Integer pagina);
+    List<Expert>findAllEstadoExperts(String estado, Integer limite, Integer pagina);
 
     Expert createExpert(Expert expert);
 

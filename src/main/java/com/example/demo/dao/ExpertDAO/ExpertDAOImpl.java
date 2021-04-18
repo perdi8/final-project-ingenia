@@ -141,7 +141,7 @@ public class ExpertDAOImpl implements ExpertDAO{
     }
 
     @Override
-    public List<Expert> findAllEstadoExperts(Boolean estado, Integer limite, Integer pagina) {
+    public List<Expert> findAllEstadoExperts(String estado, Integer limite, Integer pagina) {
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<Expert> criteria = builder.createQuery(Expert.class);
         Root<Expert> root = criteria.from(Expert.class);

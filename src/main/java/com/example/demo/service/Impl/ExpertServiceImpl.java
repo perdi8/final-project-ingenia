@@ -58,7 +58,7 @@ public class ExpertServiceImpl implements ExpertService {
     }
 
     @Override
-    public List<Expert> findAllEstadoExperts(Boolean estado, Integer limite, Integer pagina) {
+    public List<Expert> findAllEstadoExperts(String estado, Integer limite, Integer pagina) {
         return this.expertDAO.findAllEstadoExperts(estado, limite, pagina);
     }
 
