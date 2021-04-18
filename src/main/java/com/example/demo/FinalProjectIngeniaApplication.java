@@ -37,7 +37,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		Expert expert1 = new Expert("Ivan Giménez",LocalDate.now(), LocalDate.now(),
 				"null" , "mañanas", "parcial", true,
 				"12313423", "email@email.com", "valencia",
-				"e", "10.00", "15.00", 70,
+				"e", "10.00", "15.00", 100,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
 				"Validado");
@@ -45,7 +45,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		Expert expert2 = new Expert("Miguel Perdiguero",LocalDate.now(), LocalDate.now(),
 				"null" , "noches", "total", false,
 				"12313423", "email@email.com", "valencia",
-				"e", "10.00", "15.00", 90,
+				"e", "10.00", "15.00", 55,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
 				"Validado");
@@ -53,7 +53,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		Expert expert3 = new Expert("Cristina Garcia",LocalDate.now(), LocalDate.now(),
 				"null" , "tardes", "parcial", true,
 				"12313423", "email@email.com", "valencia",
-				"e", "10.00", "15.00", 70,
+				"e", "10.00", "15.00", 75,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
 				"Pdt.Validar");
@@ -61,7 +61,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		Expert expert4 = new Expert("Manuela Gutierrez",LocalDate.now(), LocalDate.now(),
 				"null" , "tardes", "total", false,
 				"12313423", "email@email.com", "valencia",
-				"e", "10.00", "15.00", 70,
+				"e", "10.00", "15.00", 25,
 				"12345678A", "Hola", "", "e",
 				"", "null", "null", "null","null",
 				"Pdt.Validar");
