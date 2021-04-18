@@ -94,6 +94,8 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 
 		expertRepository.save(expert1);
 		expertRepository.save(expert2);
+		expertRepository.save(expert3);
+		expertRepository.save(expert4);
 
 	}
 }
