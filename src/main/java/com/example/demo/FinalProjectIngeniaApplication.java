@@ -68,7 +68,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 
 
 		Tag tag1 = new Tag("Etiqueta 1",LocalDate.now() , LocalDate.now());
-		Tag tag2 = new Tag("Etiqueta 1",LocalDate.now() , LocalDate.now());
+		Tag tag2 = new Tag("Etiqueta 2",LocalDate.now() , LocalDate.now());
 		Tag tag3 = new Tag("Etiqueta 3",LocalDate.now() , LocalDate.now());
 		Tag tag4 = new Tag("Etiqueta 4",LocalDate.now() , LocalDate.now());
 		Tag tag5 = new Tag("Etiqueta 5",LocalDate.now() , LocalDate.now());
