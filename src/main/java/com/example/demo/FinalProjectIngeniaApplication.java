@@ -83,9 +83,13 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 
 		expertList.add(expert1);
 		expertList.add(expert2);
+		expertList.add(expert3);
+		expertList.add(expert4);
 
 		expert1.setTags(tagList);
 		expert2.setTags(tagList);
+		expert3.setTags(tagList);
+		expert4.setTags(tagList);
 
 		tag1.setExperts(expertList);
 		tag2.setExperts(expertList);

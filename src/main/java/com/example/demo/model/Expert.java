@@ -94,7 +94,7 @@ public class Expert {
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE})
-    @JoinTable(name = "Experts_Tags",
+    @JoinTable(name = "experts_tags",
             joinColumns = {@JoinColumn(name = "expert_id" )},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")}
     )

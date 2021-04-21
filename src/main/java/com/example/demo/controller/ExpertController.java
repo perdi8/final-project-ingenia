@@ -31,7 +31,7 @@ public class ExpertController {
                                             @RequestParam(name="modalidad",required=false) String modalidad,
                                             @RequestParam(name="estado",required=false) String estado,
                                             @RequestParam(name="tag",required=false) Long tag,
-                                            @RequestParam(name="limite", required=false, defaultValue = "6") Integer limite,
+                                            @RequestParam(name="limite", required=false, defaultValue = "25") Integer limite,
                                             @RequestParam(name="pagina", required=false, defaultValue = "0") Integer pagina
 
                                       ) {

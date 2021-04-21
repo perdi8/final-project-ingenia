@@ -9,6 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +22,10 @@ public class TagServiceImpl implements TagService {
     private final Logger log = LoggerFactory.getLogger(TagServiceImpl.class);
     private final TagDAO tagDAO;
     TagRepository repository;
+
+    @PersistenceContext
+    private EntityManager manager;
+
 
 
     public TagServiceImpl(TagDAO tagDAO, TagRepository repository) {
@@ -65,5 +73,19 @@ public class TagServiceImpl implements TagService {
         if (ObjectUtils.isEmpty(tag))
             return null;
         return repository.save(tag);
+    }
+
+    @Transactional
+    @Override
+    public void deleteById(Long id) {
+        log.info("deleteById");
+//        if(id != null && repository.existsById(id))
+
+        Long idTag = id;
+
+            Query queryNative = manager.createNativeQuery("delete from experts_tags where tag_id = "+ id);
+        queryNative.executeUpdate();
+
+            repository.deleteById(idTag);
     }
 }
