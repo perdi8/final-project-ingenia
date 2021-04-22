@@ -71,8 +71,9 @@ public class TagController {
         return ResponseEntity.ok().body(tagService.updateTag(tag));
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @DeleteMapping("/tags/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Void> deleteTag(@PathVariable Long id){
         log.debug("REST request to delete an Tag by id {}", id);
         tagService.deleteById(id);
