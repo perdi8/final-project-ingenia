@@ -8,6 +8,8 @@ import com.example.demo.service.TagService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,7 +34,6 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
 
 		Expert expert1 = new Expert("Ivan Giménez",LocalDate.now(), LocalDate.now(),
 				"null" , "mañanas", "parcial", true,
@@ -103,3 +104,4 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 
 	}
 }
+
