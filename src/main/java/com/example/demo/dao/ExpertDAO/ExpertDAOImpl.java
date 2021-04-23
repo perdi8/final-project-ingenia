@@ -65,7 +65,7 @@ public class ExpertDAOImpl implements ExpertDAO{
 
 
     @Override
-    public List<Expert> findAllByTagExperts(Long tagId, Integer limite, Integer pagina) {
+    public List<Expert> findAllByTagExperts(Long nombre, Integer limite, Integer pagina) {
 
 
 //         CriteriaBuilder cb = manager.getCriteriaBuilder();
@@ -75,8 +75,8 @@ public class ExpertDAOImpl implements ExpertDAO{
 //         TypedQuery<Expert> typedQuery = manager.createQuery(query);
 //         List<Expert> resultList = typedQuery.getResultList();
 
-        Optional<Tag> tagOpt = tagDAO.findByIdFromEntityManager(tagId);
-        if (tagId != null) {
+        Optional<Tag> tagOpt = tagDAO.findByIdFromEntityManager(nombre);
+        if (nombre != null) {
 
             return tagOpt.get().getExperts();
         }
@@ -113,7 +113,7 @@ public class ExpertDAOImpl implements ExpertDAO{
         Root<Expert> root = criteria.from(Expert.class);
         criteria.select(root);
 
-        criteria.where(builder.equal(root.get("nombre"), nombre));
+        criteria.where(builder.like(root.get("nombre"), "%" + nombre + "%"));
 
         Query query = manager.createQuery(criteria);
 

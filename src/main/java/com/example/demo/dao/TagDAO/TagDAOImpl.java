@@ -46,14 +46,14 @@ public class TagDAOImpl implements TagDAO {
     }
 
     @Override
-    public List<Tag> findAllByAttributeFromEntityManager(String name) {
+    public List<Tag> findAllByAttributeFromEntityManager(String nombre) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<Tag> criteria = builder.createQuery(Tag.class);
         Root<Tag> root = criteria.from(Tag.class);
         criteria.select(root);
 
-        criteria.where(builder.equal(root.get("nombre"), name));
+        criteria.where(builder.like(root.get("nombre"), "%" + nombre + "%"));
 
         return manager.createQuery(criteria).getResultList();
     }
@@ -84,7 +84,7 @@ public class TagDAOImpl implements TagDAO {
         Root<Tag> root = criteria.from(Tag.class);
         criteria.select(root);
 
-        criteria.where(builder.equal(root.get("nombre"),  nombre));
+        criteria.where(builder.like(root.get("nombre"),  "%" + nombre + "%"));
 
         Query query = manager.createQuery(criteria);
 

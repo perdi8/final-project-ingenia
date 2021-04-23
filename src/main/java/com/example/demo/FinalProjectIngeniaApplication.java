@@ -68,19 +68,23 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 				"Pdt.Validar");
 
 
-		Tag tag1 = new Tag("Etiqueta 1",LocalDate.now() , LocalDate.now());
-		Tag tag2 = new Tag("Etiqueta 2",LocalDate.now() , LocalDate.now());
-		Tag tag3 = new Tag("Etiqueta 3",LocalDate.now() , LocalDate.now());
-		Tag tag4 = new Tag("Etiqueta 4",LocalDate.now() , LocalDate.now());
-		Tag tag5 = new Tag("Etiqueta 5",LocalDate.now() , LocalDate.now());
+		Tag tag1 = new Tag("React",LocalDate.now() , LocalDate.now());
+		Tag tag2 = new Tag("Angular",LocalDate.now() , LocalDate.now());
+		Tag tag3 = new Tag("JavaScript",LocalDate.now() , LocalDate.now());
+		Tag tag4 = new Tag("Java",LocalDate.now() , LocalDate.now());
+		Tag tag5 = new Tag("Vue",LocalDate.now() , LocalDate.now());
 
 		List tagList = new ArrayList();
+		List tagList2 = new ArrayList();
 		List expertList = new ArrayList();
 
 		tagList.add(tag1);
 		tagList.add(tag2);
 		tagList.add(tag3);
 		tagList.add(tag4);
+
+		tagList2.add(tag1);
+		tagList2.add(tag2);
 
 		expertList.add(expert1);
 		expertList.add(expert2);
@@ -90,7 +94,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		expert1.setTags(tagList);
 		expert2.setTags(tagList);
 		expert3.setTags(tagList);
-		expert4.setTags(tagList);
+		expert4.setTags(tagList2);
 
 		tag1.setExperts(expertList);
 		tag2.setExperts(expertList);

@@ -30,7 +30,7 @@ public class TagController {
 
     @GetMapping("/tags")
     public List<Tag> tagsFilters(@RequestParam(name="nombre", required=false) String nombre,
-                                 @RequestParam(name="limite", required=false, defaultValue = "5") Integer limite,
+                                 @RequestParam(name="limite", required=false, defaultValue = "10") Integer limite,
                                  @RequestParam(name="pagina", required=false, defaultValue = "0") Integer pagina)
     {
 
