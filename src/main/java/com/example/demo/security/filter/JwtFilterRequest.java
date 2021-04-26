@@ -51,9 +51,9 @@ public class JwtFilterRequest extends OncePerRequestFilter {
 //        final String origin = "http://localhost:4200";
 
 //        httpServletResponse.addHeader("Access-Control_Allow_Origin", origin);
-        httpServletResponse.setHeader("Access-Control_Allow_Methods", "POST, GET, PUT,DELETE,OPTIONS");
-        httpServletResponse.setHeader("Access-Control_Allow_Credentials", "true");
-        httpServletResponse.setHeader("Access-Control_Allow_Headers", "content-type, x-gwt-module-base, x-gwt-permutation, clientid, longpush");
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+        httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers", "content-type, x-gwt-module-base, x-gwt-permutation, clientid, longpush");
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }
