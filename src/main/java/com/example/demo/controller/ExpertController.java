@@ -13,11 +13,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:8080", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
 
 @RestController
 @RequestMapping("/api")
-
+@CrossOrigin(origins = "https://final-project-ingenia.herokuapp.com", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class ExpertController {
 
     private final Logger log = LoggerFactory.getLogger(ExpertController.class);
