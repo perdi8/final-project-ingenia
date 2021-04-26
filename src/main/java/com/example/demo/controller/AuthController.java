@@ -29,7 +29,7 @@ public class AuthController {
     @Autowired
     private JWTUtil jwtUtil;
 
-    @PostMapping("/")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request) {
 
 
