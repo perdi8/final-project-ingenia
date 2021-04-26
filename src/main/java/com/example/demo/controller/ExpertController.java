@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:8080", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class ExpertController {
 
     private final Logger log = LoggerFactory.getLogger(ExpertController.class);
@@ -31,7 +32,7 @@ public class ExpertController {
                                             @RequestParam(name="modalidad",required=false) String modalidad,
                                             @RequestParam(name="estado",required=false) String estado,
                                             @RequestParam(name="tag",required=false) Long tag,
-                                            @RequestParam(name="limite", required=false, defaultValue = "25") Integer limite,
+                                            @RequestParam(name="limite", required=false, defaultValue = "5") Integer limite,
                                             @RequestParam(name="pagina", required=false, defaultValue = "0") Integer pagina
 
                                       ) {
