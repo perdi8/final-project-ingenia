@@ -50,6 +50,7 @@ public class JwtFilterRequest extends OncePerRequestFilter {
         }
 //        final String origin = "http://localhost:4200";
 
+
 //        httpServletResponse.addHeader("Access-Control_Allow_Origin", origin);
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
         httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
