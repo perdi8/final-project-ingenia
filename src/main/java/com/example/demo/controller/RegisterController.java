@@ -28,7 +28,7 @@ public class RegisterController {
     @PostMapping("/register")
     public ResponseEntity<UserDetail> createExpert(@RequestBody UserDetail user) throws URISyntaxException {
         log.debug("REST request to create an User: {} ", user);
-        if (user.getId() == null)
+        if (user.getId() != null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         UserDetail userDB = registerService.createUser(user);

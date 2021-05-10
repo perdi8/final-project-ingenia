@@ -23,7 +23,7 @@ public class RegisterServiceImpl implements RegisterService {
         log.info("createUSer");
         if (ObjectUtils.isEmpty(userDetail))
             return null;
-
+        System.out.println(userDetail);
         return registerRepository.save(userDetail);
     }
 }
