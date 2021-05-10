@@ -26,7 +26,7 @@ public class UserDetailServicesImpl implements UserDetailsService {
         // se utiliza para poner los tipos de roles que tendra el usuario
         // el codificador de la contraseña es dentro de {} poner noop
 
-        User user = registerRepository.findByEmail(email)
+        User user = registerRepository.findByEmail(Optional.ofNullable(email))
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " +  email));
 
         return new org.springframework.security.core.userdetails.User(

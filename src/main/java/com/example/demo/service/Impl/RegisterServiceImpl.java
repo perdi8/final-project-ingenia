@@ -5,7 +5,6 @@ import com.example.demo.model.User;
 import com.example.demo.repository.RegisterRepository;
 import com.example.demo.service.RegisterService;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +34,21 @@ public class RegisterServiceImpl implements RegisterService {
             return null;
 
 
-        String email = user.getEmail();
+        Optional<String> email = Optional.ofNullable(user.getEmail());
         Optional<User> emailDB = registerRepository.findByEmail(email);
-
+         Optional<Object> db = emailDB.map(a -> {
+            String ala =  a.getEmail();
+             return ala;
+         });
 
         String md5Hex = DigestUtils.md5Hex(user.getPassword()).toUpperCase();
         user.setPassword(md5Hex);
-        System.out.println("~~~~~~~~~~$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "  + user.getPassword()) ;
+        System.out.println("~~~~~~~~~~$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  DB " + db  ) ;
+        System.out.println("~~~~~~~~~~$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ USER "  + email) ;
 
+        if (email.equals(db))  {
+            return null;
+        }
         return registerRepository.save(user);
     }
 }
