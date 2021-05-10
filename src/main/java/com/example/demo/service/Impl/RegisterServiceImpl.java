@@ -14,6 +14,10 @@ public class RegisterServiceImpl implements RegisterService {
 
     private final Logger log = LoggerFactory.getLogger(RegisterServiceImpl.class);
 
+    public RegisterServiceImpl(RegisterRepository registerRepository) {
+        this.registerRepository = registerRepository;
+    }
+
     @Override
     public UserDetail createUser(UserDetail userDetail) {
         log.info("createUSer");
