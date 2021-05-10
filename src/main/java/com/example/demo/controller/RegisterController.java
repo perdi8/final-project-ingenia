@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Expert;
-import com.example.demo.model.UserDetail;
+import com.example.demo.model.User;
+import com.example.demo.repository.RegisterRepository;
 import com.example.demo.service.RegisterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,18 +20,21 @@ public class RegisterController {
     private final Logger log = LoggerFactory.getLogger(RegisterController.class);
 
     private final RegisterService registerService;
+    public final RegisterRepository registerRepository;
 
-    public RegisterController(RegisterService registerService) {
+    public RegisterController(RegisterService registerService, RegisterRepository registerRepository) {
         this.registerService = registerService;
+        this.registerRepository = registerRepository;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserDetail> createExpert(@RequestBody UserDetail user) throws URISyntaxException {
+    public ResponseEntity<User> createExpert(@RequestBody User user) throws URISyntaxException {
         log.debug("REST request to create an User: {} ", user);
         if (user.getId() != null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        UserDetail userDB = registerService.createUser(user);
+
+        User userDB = registerService.createUser(user);
         return ResponseEntity
                 .created(new URI("/api/register" + userDB.getId()))
                 .body(userDB);

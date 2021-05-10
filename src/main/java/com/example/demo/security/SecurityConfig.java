@@ -1,7 +1,7 @@
 package com.example.demo.security;
 
 import com.example.demo.security.filter.JwtFilterRequest;
-import com.example.demo.service.UserDetailServices;
+import com.example.demo.service.UserDetailServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,17 +10,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailServices userDetailServices;
+    private UserDetailServicesImpl userDetailServicesImpl;
     @Autowired
     private JwtFilterRequest jwtFilterRequest;
 
@@ -28,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Generamos un metodo con generate Override methods y seleccionamos [ configuration auth... ]
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(userDetailServices);
+       auth.userDetailsService(userDetailServicesImpl);
 
     }
 
