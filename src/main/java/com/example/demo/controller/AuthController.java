@@ -35,6 +35,8 @@ public class AuthController {
         String md5Hex = DigestUtils.md5Hex(request.getPassword()).toUpperCase();
         request.setPassword(md5Hex);
 
+        System.out.println(md5Hex);
+
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
             UserDetails userDetails = userDetailServicesImpl.loadUserByUsername(request.getEmail());
