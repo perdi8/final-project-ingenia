@@ -114,7 +114,5 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		registerRepository.save(user1);
 
 	}
-
-
 }
 
