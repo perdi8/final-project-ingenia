@@ -10,6 +10,9 @@ import com.example.demo.service.TagService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,6 +37,15 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		SpringApplication.run(FinalProjectIngeniaApplication.class, args);
 	}
 
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/*").allowedOrigins("").allowedMethods("GET", "POST","PUT", "DELETE");
+			}
+		};
+	}
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -114,5 +126,7 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		registerRepository.save(user1);
 
 	}
+
+
 }
 
