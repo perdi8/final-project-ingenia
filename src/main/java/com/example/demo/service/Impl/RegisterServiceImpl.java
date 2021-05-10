@@ -39,8 +39,8 @@ public class RegisterServiceImpl implements RegisterService {
 
         System.out.println("~~~~~~~~~~$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "  + emailDB) ;
 
-//        String userPassword = user.getPassword();
-//        user.setPassword(BCrypt.hashpw(userPassword, BCrypt.gensalt()));
+        String userPassword = user.getPassword();
+        user.setPassword(BCrypt.hashpw(userPassword, BCrypt.gensalt()));
 
         return registerRepository.save(user);
     }
