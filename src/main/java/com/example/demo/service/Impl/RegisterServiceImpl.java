@@ -4,11 +4,13 @@ package com.example.demo.service.Impl;
 import com.example.demo.model.User;
 import com.example.demo.repository.RegisterRepository;
 import com.example.demo.service.RegisterService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 import org.springframework.util.ObjectUtils;
 
@@ -37,10 +39,9 @@ public class RegisterServiceImpl implements RegisterService {
         Optional<User> emailDB = registerRepository.findByEmail(email);
 
 
-        System.out.println("~~~~~~~~~~$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "  + emailDB) ;
-
-        String userPassword = user.getPassword();
-        user.setPassword(BCrypt.hashpw(userPassword, BCrypt.gensalt()));
+        String md5Hex = DigestUtils.md5Hex(user.getPassword()).toUpperCase();
+        user.setPassword(md5Hex);
+        System.out.println("~~~~~~~~~~$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "  + user.getPassword()) ;
 
         return registerRepository.save(user);
     }

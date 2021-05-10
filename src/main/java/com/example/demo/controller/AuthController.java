@@ -5,6 +5,7 @@ import com.example.demo.config.AuthenticationRequest;
 import com.example.demo.config.AuthenticationResponse;
 import com.example.demo.security.JWTUtil;
 import com.example.demo.service.UserDetailServicesImpl;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,9 +32,10 @@ public class AuthController {
     @PostMapping("/auth")
     public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request) {
 
-        String userPassword = request.getPassword();
-        request.setPassword(BCrypt.hashpw(userPassword, BCrypt.gensalt()));
+        String md5Hex = DigestUtils.md5Hex(request.getPassword()).toUpperCase();
+        request.setPassword(md5Hex);
 
+        System.out.println(md5Hex);
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
