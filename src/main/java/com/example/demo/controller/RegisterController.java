@@ -13,7 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController
-@RequestMapping("")
+@RequestMapping()
 @CrossOrigin(origins = "https://final-project-ingenia-angular.vercel.app", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class RegisterController {
 
