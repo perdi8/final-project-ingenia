@@ -27,10 +27,10 @@ public class UserDetailServicesImpl implements UserDetailsService {
         // el codificador de la contraseña es dentro de {} poner noop
 
         User user = registerRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " + email));
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " +  email));
 
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),user.getPassword(),new ArrayList<>());
+                user.getUsername(), "{noop}" + user.getPassword() ,new ArrayList<>());
 
     }
 }
