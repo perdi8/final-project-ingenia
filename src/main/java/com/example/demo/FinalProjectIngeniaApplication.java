@@ -2,14 +2,14 @@ package com.example.demo;
 
 import com.example.demo.model.Expert;
 import com.example.demo.model.Tag;
+import com.example.demo.model.User;
 import com.example.demo.repository.ExpertRepository;
+import com.example.demo.repository.RegisterRepository;
 import com.example.demo.service.ExpertService;
 import com.example.demo.service.TagService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,11 +21,13 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 	final TagService tagService;
 	final ExpertService expertService;
 	final ExpertRepository expertRepository;
+	final RegisterRepository registerRepository;
 
-	public FinalProjectIngeniaApplication(TagService tagService, ExpertService expertService, ExpertRepository expertRepository) {
+	public FinalProjectIngeniaApplication(TagService tagService, ExpertService expertService, ExpertRepository expertRepository, RegisterRepository registerRepository) {
 		this.tagService = tagService;
 		this.expertService = expertService;
 		this.expertRepository = expertRepository;
+		this.registerRepository = registerRepository;
 	}
 
 	public static void main(String[] args) {
@@ -74,6 +76,9 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		Tag tag4 = new Tag("Java",LocalDate.now() , LocalDate.now());
 		Tag tag5 = new Tag("Vue",LocalDate.now() , LocalDate.now());
 
+
+		User user1 = new User("perdi666@gmail.com", "Miguel", "ingenia");
+
 		List tagList = new ArrayList();
 		List tagList2 = new ArrayList();
 		List expertList = new ArrayList();
@@ -105,6 +110,8 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		expertRepository.save(expert2);
 		expertRepository.save(expert3);
 		expertRepository.save(expert4);
+
+		registerRepository.save(user1);
 
 	}
 }
