@@ -77,8 +77,6 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		Tag tag5 = new Tag("Vue",LocalDate.now() , LocalDate.now());
 
 
-		User user1 = new User("perdi666@gmail.com", "Miguel", "ingenia");
-
 		List tagList = new ArrayList();
 		List tagList2 = new ArrayList();
 		List expertList = new ArrayList();
@@ -110,8 +108,6 @@ public class FinalProjectIngeniaApplication implements CommandLineRunner {
 		expertRepository.save(expert2);
 		expertRepository.save(expert3);
 		expertRepository.save(expert4);
-
-		registerRepository.save(user1);
 
 	}
 }
