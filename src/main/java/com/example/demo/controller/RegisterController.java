@@ -13,7 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping()
 @CrossOrigin(origins = "https://final-project-ingenia-angular.vercel.app", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class RegisterController {
 
@@ -36,7 +36,7 @@ public class RegisterController {
 
         User userDB = registerService.createUser(user);
         return ResponseEntity
-                .created(new URI("/api/register" + userDB.getId()))
+                .created(new URI("/register" + userDB.getId()))
                 .body(userDB);
     }
 }
